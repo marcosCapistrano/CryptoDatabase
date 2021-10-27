@@ -3,7 +3,11 @@
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
+    "target": "es6",
     "lib": ["esnext"],
+    "moduleResolution": "node",
     "esModuleInterop": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

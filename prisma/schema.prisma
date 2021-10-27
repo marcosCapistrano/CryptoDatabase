@@ -20,10 +20,10 @@ model Cryptocurrency {
 }
 
 model Quote {
-  id                 Int      @id @map("_id")
+  id                 String      @id @map("_id") @default(dbgenerated()) @db.ObjectId
   timestamp          DateTime
-  circulating_supply BigInt
-  total_supply       BigInt
+  circulating_supply Float
+  total_supply       Float
   price              Float
   volume24h          Float
   market_cap         Float
