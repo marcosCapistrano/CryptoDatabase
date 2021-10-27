@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Cryptocurrency {
+  id Int @id @map("_id")
+
+  name   String
+  symbol String
+  quotes Quote[]
+}
+
+model Quote {
+  id                 Int      @id @map("_id")
+  timestamp          DateTime
+  circulating_supply BigInt
+  total_supply       BigInt
+  price              Float
+  volume24h          Float
+  market_cap         Float
+
+  Cryptocurrency    Cryptocurrency @relation(fields: [cryptocurrency_id], references: [id])
+  cryptocurrency_id Int
+}
